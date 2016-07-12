@@ -20,6 +20,8 @@ namespace noob
 			{
 				friend class graph;
 
+				public:
+
 				void reset()
 				{
 					arc_index = 0;
@@ -27,7 +29,7 @@ namespace noob
 
 				bool has_next()
 				{
-					return (arc_index < (graph_ref.nodes[node_index].outgoing.size() - 1));
+					return (arc_index < (node_ref.outgoing.size() - 1));
 				}
 				
 				void increment()
@@ -37,13 +39,13 @@ namespace noob
 
 				uint32_t get_current_child()
 				{
-					return graph_ref.nodes[node_index].outgoing[arc_index].child;
+					return (node_ref.outgoing[arc_index]).child;
 				}
 				
 				protected:
-					node_it(graph& g, uint32_t n) noexcept(true) : graph_ref(g), node_index(n), arc_index(0) {}
-					noob::graph& graph_ref;
-					uint32_t node_index, arc_index;
+					node_it(graph::node& n) noexcept(true) : node_ref(n), arc_index(0) {}
+					noob::graph::node& node_ref;
+					uint32_t arc_index;
 			};
 
 
