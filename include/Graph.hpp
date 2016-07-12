@@ -27,7 +27,7 @@ namespace noob
 
 				bool has_next()
 				{
-					return (arc_index < graph_ref.nodes[node_index].outgoing.size() - 1);
+					return (arc_index < (graph_ref.nodes[node_index].outgoing.size() - 1));
 				}
 				
 				void increment()
@@ -37,7 +37,7 @@ namespace noob
 
 				uint32_t get_current_child()
 				{
-					return graph_ref.nodes[node_index].outgoing[arc_index];
+					return graph_ref.nodes[node_index].outgoing[arc_index].child;
 				}
 				
 				protected:
@@ -62,8 +62,8 @@ namespace noob
 		protected:
 			struct arc
 			{
-				arc() noexcept(true) : value(1), child(std::numeric_limits<uint32_t>::max()) {}
-				uint32_t value, child;
+				arc() noexcept(true) : child(std::numeric_limits<uint32_t>::max()) {}
+				uint32_t child;
 			};
 
 			struct node
