@@ -24,7 +24,7 @@ namespace noob
 				void reset()
 				{
 					arc_index = 0;
-					valid = (nodes[]);
+					valid = (graph_ref.nodes[node_index].valid);
 				}
 
 				bool valid()
@@ -34,7 +34,7 @@ namespace noob
 
 				bool has_next()
 				{
-					if (node_index < )
+					if (node_index < graph_ref.nodes.size())
 				}
 				protected:
 
