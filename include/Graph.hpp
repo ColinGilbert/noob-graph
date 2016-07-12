@@ -13,9 +13,9 @@
 
 namespace noob
 {
-	template <typename T> class graph
+	class graph
 	{
-		protected:
+		public:
 			class node_it
 			{
 				friend class graph;
@@ -47,6 +47,17 @@ namespace noob
 			};
 
 
+			// Member functions
+			bool node_exists(uint32_t n) const
+			{
+				if (n > nodes.size() - 1)
+				{
+					return false;
+				}
+				return nodes[n].valid;
+			}
+
+
 
 		protected:
 			struct arc
@@ -65,6 +76,5 @@ namespace noob
 
 			uint32_t n_edges, n_nodes;
 			rde::vector<node> nodes;
-			rde::vector<T> values;
 	};
 }
