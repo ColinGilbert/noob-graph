@@ -49,7 +49,7 @@ namespace noob
 		protected:
 			struct arc
 			{
-				arc() noexcept(true) : value(1), child(std::numeric_limits<uint32_t>::max()),  {}
+				arc() noexcept(true) : value(1), child(std::numeric_limits<uint32_t>::max()) {}
 				uint32_t value, child;
 			};
 
