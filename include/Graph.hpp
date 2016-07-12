@@ -27,7 +27,7 @@ namespace noob
 
 				bool has_next()
 				{
-					return (node_index < graph_ref.nodes.size() - 1)
+					return (arc_index < graph_ref.nodes[node_index].size() - 1);
 				}
 
 				protected:
