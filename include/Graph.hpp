@@ -20,27 +20,19 @@ namespace noob
 			{
 				friend class graph;
 
-				
 				void reset()
 				{
 					arc_index = 0;
-					valid = (graph_ref.nodes[node_index].valid);
-				}
-
-				bool valid()
-				{
-					return valid;
 				}
 
 				bool has_next()
 				{
 					if (node_index < graph_ref.nodes.size())
 				}
-				protected:
 
-					node_it(const graph& g) noexcept(true) : graph_ref(g), valid(false), node_index(std::numeric_limits<uint32_t>::max()), arc_index(0) {}
+				protected:
+					node_it(const graph& g, uint32_t n) noexcept(true) : graph_ref(g), node_index(n), arc_index(0) {}
 					noob::graph& graph_ref;
-					bool valid;
 					uint32_t node_index, arc_index;
 			};
 
