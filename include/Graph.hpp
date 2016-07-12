@@ -27,7 +27,7 @@ namespace noob
 
 				bool has_next()
 				{
-					if (node_index < graph_ref.nodes.size())
+					return (node_index < graph_ref.nodes.size() - 1)
 				}
 
 				protected:
