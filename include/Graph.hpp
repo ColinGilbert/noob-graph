@@ -54,7 +54,8 @@ namespace noob
 
 				uint32_t get_current_child()
 				{
-					return node_ref.outgoing[arc_index].child;
+					arc a = node_ref.outgoing[arc_index];
+					return a.child;
 				}
 				
 				protected:
