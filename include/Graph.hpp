@@ -16,6 +16,21 @@ namespace noob
 	class graph
 	{
 		public:
+
+			struct arc
+			{
+				arc() noexcept(true) : child(std::numeric_limits<uint32_t>::max()) {}
+				uint32_t child;
+			};
+
+			struct node
+			{
+				node() noexcept(true) : valid(true) {}
+				bool valid;
+				rde::slist<arc> outgoing;
+
+			};
+
 			class node_it
 			{
 				friend class graph;
@@ -62,19 +77,6 @@ namespace noob
 
 
 		protected:
-			struct arc
-			{
-				arc() noexcept(true) : child(std::numeric_limits<uint32_t>::max()) {}
-				uint32_t child;
-			};
-
-			struct node
-			{
-				node() noexcept(true) : valid(true) {}
-				bool valid;
-				rde::slist<arc> outgoing;
-
-			};
 
 			uint32_t n_edges, n_nodes;
 			rde::vector<node> nodes;
