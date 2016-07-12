@@ -39,11 +39,11 @@ namespace noob
 
 				uint32_t get_current_child()
 				{
-					return (node_ref.outgoing[arc_index]).child;
+					return node_ref.outgoing[arc_index].child;
 				}
 				
 				protected:
-					node_it(graph::node& n) noexcept(true) : node_ref(n), arc_index(0) {}
+					node_it(noob::graph::node& n) noexcept(true) : node_ref(n), arc_index(0) {}
 					noob::graph::node& node_ref;
 					uint32_t arc_index;
 			};
