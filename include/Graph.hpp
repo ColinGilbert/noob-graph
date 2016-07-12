@@ -29,7 +29,17 @@ namespace noob
 				{
 					return (arc_index < graph_ref.nodes[node_index].size() - 1);
 				}
+				
+				void increment()
+				{
+					++arc_index;
+				}
 
+				uint32_t get_current_child()
+				{
+					return graph_ref.nodes[node_index].outgoing[arc_index];
+				}
+				
 				protected:
 					node_it(const graph& g, uint32_t n) noexcept(true) : graph_ref(g), node_index(n), arc_index(0) {}
 					noob::graph<T>& graph_ref;
