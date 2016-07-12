@@ -42,7 +42,7 @@ namespace noob
 				
 				protected:
 					node_it(const graph& g, uint32_t n) noexcept(true) : graph_ref(g), node_index(n), arc_index(0) {}
-					noob::graph<T>& graph_ref;
+					noob::graph& graph_ref;
 					uint32_t node_index, arc_index;
 			};
 
