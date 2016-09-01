@@ -17,7 +17,7 @@ namespace noob
 	{
 		typedef noob::component::handle<noob::graph::node> node_handle;
 
-		bool path_exists(uint32_t)
+		// bool path_exists(uint32_t)
 
 		noob::graph::node_handle node_add()
 		{
