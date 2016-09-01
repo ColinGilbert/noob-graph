@@ -15,7 +15,7 @@ namespace noob
 
 	class graph
 	{
-		typedef noob::component::handle<noob::graph::node> node_handle;
+		typedef noob::handle<noob::graph::node> node_handle;
 
 		// bool path_exists(uint32_t)
 
