@@ -17,7 +17,7 @@ namespace noob
 		
 		uint32_t node_add()
 		{
-			noob::node n;
+			noob::graph::node n;
 			nodes.push_back(n);
 			return nodes.size() - 1;
 		}
