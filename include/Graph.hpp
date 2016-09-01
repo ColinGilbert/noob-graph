@@ -12,20 +12,18 @@
 
 namespace noob
 {
-	typedef noob::handle<noob::graph::node> node_handle;
-
 	class graph
 	{
 		// bool path_exists(uint32_t)
 
-		noob::node_handle node_add()
+		noob::handle<noob::graph::node> node_add()
 		{
 			noob::graph::node n;
 			return nodes.add(n);
 		}
 
 		// Member functions
-		bool node_valid(noob::node_handle n) const
+		bool node_valid(noob::handle<noob::graph::node> n) const
 		{
 			if (nodes.exists(n))
 			{
