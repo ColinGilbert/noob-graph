@@ -24,7 +24,8 @@ namespace noob
 		uint32_t node_add() noexcept(true)
 		{
 			noob::graph::node n;
-			return nodes.add(n);
+			nodes.push_back(n);
+			return nodes.size() - 1;
 		}
 
 		// Member functions
