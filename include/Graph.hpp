@@ -15,18 +15,17 @@ namespace noob
 
 	class graph
 	{
+		// bool path_exists(uint32_t)
 		typedef noob::handle<noob::graph::node> node_handle;
 
-		// bool path_exists(uint32_t)
-
-		noob::graph::node_handle node_add()
+		noob::node_handle node_add()
 		{
 			noob::graph::node n;
 			return nodes.add(n);
 		}
 
 		// Member functions
-		bool node_valid(noob::graph::node_handle n) const
+		bool node_valid(noob::node_handle n) const
 		{
 			if (nodes.exists(n))
 			{
@@ -35,7 +34,7 @@ namespace noob
 			return nodes.get_unsafe(n).valid;
 		}
 
-	protected:
+		protected:
 
 		struct node
 		{
