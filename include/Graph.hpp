@@ -8,28 +8,31 @@
 #include <rdestl/vector.h>
 
 
+#include "Component.hpp"
 
 namespace noob
 {
 
 	class graph
 	{
-		
-		uint32_t node_add()
+		typedef noob::component::handle<noob::graph::node> node_handle;
+
+		bool path_exists(uint32_t)
+
+		noob::graph::node_handle node_add()
 		{
 			noob::graph::node n;
-			nodes.push_back(n);
-			return nodes.size() - 1;
+			return nodes.add(n);
 		}
 
 		// Member functions
-		bool node_valid(uint32_t n) const
+		bool node_valid(noob::graph::node_handle n) const
 		{
-			if (n > nodes.size() - 1)
+			if (nodes.exists(n)
 			{
 				return false;
 			}
-			return nodes[n].valid;
+			return nodes.get_unsafe(n).valid;
 		}
 
 	protected:
@@ -45,6 +48,6 @@ namespace noob
 		};
 
 
-		rde::vector<node> nodes;
+		noob::component<noob::graph::node> nodes;
 	};
 }
