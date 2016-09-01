@@ -21,6 +21,18 @@ namespace noob
 			
 		}
 
+		void path_add(uint32_t first, uint32_t second) noexcept(true)
+		{
+			if (is_valid(first) && is_valid(second))
+			{
+				// Don't wanna add no duplicates
+				if (rde::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) == nodes[first].outgoing.end())
+				{
+					nodes[first].outgoing.push_back(second);
+				}
+			}
+		}
+
 		uint32_t node_add() noexcept(true)
 		{
 			noob::graph::node n;
