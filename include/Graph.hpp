@@ -6,24 +6,21 @@
 #include <assert.h>
 
 #include <rdestl/vector.h>
-#include <rdestl/list.h>
 
 
 
 namespace noob
 {
 
-	struct graph
+	class graph
 	{
-		struct node
+		
+		uint32_t node_add()
 		{
-			node() noexcept(true) : valid(true) {}
-
-			static constexpr uint32_t invalid = std::numeric_limits<uint32_t>::max();
-
-			bool valid;
-			rde::vector<uint32_t> outgoing;
-		};
+			noob::node n;
+			nodes.push_back(n);
+			return nodes.size() - 1;
+		}
 
 		// Member functions
 		bool node_valid(uint32_t n) const
@@ -34,6 +31,19 @@ namespace noob
 			}
 			return nodes[n].valid;
 		}
+
+	protected:
+
+		struct node
+		{
+			node() noexcept(true) : valid(true) {}
+
+			static constexpr uint32_t invalid = std::numeric_limits<uint32_t>::max();
+
+			bool valid;
+			rde::vector<uint32_t> outgoing;
+		};
+
 
 		rde::vector<node> nodes;
 	};
