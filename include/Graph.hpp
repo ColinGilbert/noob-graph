@@ -6,30 +6,43 @@
 #include <assert.h>
 
 #include <rdestl/vector.h>
-
-
-#include "Component.hpp"
+#include <rdestl/algorithm.h>
 
 namespace noob
 {
 	class graph
 	{
-		// bool path_exists(uint32_t)
+		bool path_exists(uint32_t first, uint32_t second) const noexcept(true)
+		{
+			if (!node_valid(first) || !node_valid(second)) return false;
+			
+			return (rde::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) != nodes[first].outgoing.end());
 
-		noob::handle<noob::graph::node> node_add()
+			
+		}
+
+		uint32_t node_add() noexcept(true)
 		{
 			noob::graph::node n;
 			return nodes.add(n);
 		}
 
 		// Member functions
-		bool node_valid(noob::handle<noob::graph::node> n) const
+		bool is_valid(uint32_t n) const noexcept(true)
 		{
-			if (nodes.exists(n))
+			if (!(n < nodes.size()))
 			{
 				return false;
 			}
-			return nodes.get_unsafe(n).valid;
+			return nodes[n].valid;
+		}
+
+		void set_valid(uint32_t n, bool b) noexcept(true)
+		{
+			if (n < nodes.size())
+			{
+				nodes[n].valid = b;
+			}
 		}
 
 		protected:
@@ -45,6 +58,6 @@ namespace noob
 		};
 
 
-		noob::component<noob::graph::node> nodes;
+		rde::vector<noob::graph::node> nodes;
 	};
 }
