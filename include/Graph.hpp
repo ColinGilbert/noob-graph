@@ -14,7 +14,7 @@ namespace noob
 	{
 		bool path_exists(uint32_t first, uint32_t second) const noexcept(true)
 		{
-			if (!node_valid(first) || !node_valid(second)) return false;
+			if (!is_valid(first) || !is_valid(second)) return false;
 			
 			return (rde::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) != nodes[first].outgoing.end());
 
