@@ -12,11 +12,11 @@
 
 namespace noob
 {
+	typedef noob::handle<noob::graph::node> node_handle;
 
 	class graph
 	{
 		// bool path_exists(uint32_t)
-		typedef noob::handle<noob::graph::node> node_handle;
 
 		noob::node_handle node_add()
 		{
