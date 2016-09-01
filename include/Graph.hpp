@@ -5,42 +5,46 @@
 #include <limits>
 #include <assert.h>
 
-#include <rdestl/vector.h>
-#include <rdestl/algorithm.h>
+#include <algorithm>
+#include <vector>
 
 namespace noob
 {
 	class graph
 	{
+		public:
+
 		bool path_exists(uint32_t first, uint32_t second) const noexcept(true)
 		{
 			if (!is_valid(first) || !is_valid(second)) return false;
-			
-			return (rde::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) != nodes[first].outgoing.end());
 
-			
+			return (std::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) != nodes[first].outgoing.end());		
 		}
 
-		void path_add(uint32_t first, uint32_t second) noexcept(true)
+		uint32_t num_nodes() const noexcept(true)
+		{
+			return nodes.size();
+		}
+
+		void add_path(uint32_t first, uint32_t second) noexcept(true)
 		{
 			if (is_valid(first) && is_valid(second))
 			{
 				// Don't wanna add no duplicates
-				if (rde::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) == nodes[first].outgoing.end())
+				if (std::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) == nodes[first].outgoing.end())
 				{
 					nodes[first].outgoing.push_back(second);
 				}
 			}
 		}
 
-		uint32_t node_add() noexcept(true)
+		uint32_t add_node() noexcept(true)
 		{
 			noob::graph::node n;
 			nodes.push_back(n);
 			return nodes.size() - 1;
 		}
 
-		// Member functions
 		bool is_valid(uint32_t n) const noexcept(true)
 		{
 			if (!(n < nodes.size()))
@@ -64,13 +68,12 @@ namespace noob
 		{
 			node() noexcept(true) : valid(true) {}
 
-			static constexpr uint32_t invalid = std::numeric_limits<uint32_t>::max();
+			// static constexpr uint32_t invalid = std::numeric_limits<uint32_t>::max();
 
 			bool valid;
-			rde::vector<uint32_t> outgoing;
+			std::vector<uint32_t> outgoing;
 		};
 
-
-		rde::vector<noob::graph::node> nodes;
+		std::vector<noob::graph::node> nodes;
 	};
 }
