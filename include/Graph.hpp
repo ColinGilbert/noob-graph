@@ -28,7 +28,7 @@ namespace noob
 		// Member functions
 		bool node_valid(noob::graph::node_handle n) const
 		{
-			if (nodes.exists(n)
+			if (nodes.exists(n))
 			{
 				return false;
 			}
