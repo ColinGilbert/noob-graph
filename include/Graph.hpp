@@ -12,9 +12,8 @@
 
 namespace noob
 {
-
 	typedef noob::handle<uint32_t> node_handle;
-	template <typename T>
+
 	class graph
 	{
 		public:
@@ -24,15 +23,6 @@ namespace noob
 				return nodes.size();
 			}
 			
-			T get_node_val(noob::node_handle arg) const noexcept(true)
-			{
-				return nodes[arg.index()].t;
-			}
-
-			void set_node_val(noob::node_handle n, T t) noexcept(true)
-			{
-				nodes[n.index()] = t;
-			}
 
 			noob::node_handle add_node() noexcept(true)
 			{
@@ -107,8 +97,6 @@ namespace noob
 				node() noexcept(true) : valid(true) {}
 
 				static constexpr uint32_t invalid = std::numeric_limits<uint32_t>::max();
-
-				T t;
 
 				bool valid;
 				std::vector<uint32_t> outgoing;
