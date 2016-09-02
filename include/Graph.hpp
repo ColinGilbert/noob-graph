@@ -29,6 +29,10 @@ namespace noob
 				return nodes[arg.index()].t;
 			}
 
+			void set_node_val(noob::node_handle n, T t) noexcept(true)
+			{
+				nodes[n.index()] = t;
+			}
 
 			noob::node_handle add_node() noexcept(true)
 			{
