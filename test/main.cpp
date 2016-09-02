@@ -1,7 +1,8 @@
 #include "Graph.hpp"
-
+#include "Logger.hpp"
 #include <cassert>
 #include <iostream>
+#include <sstream>
 
 int main()
 {
@@ -28,6 +29,16 @@ int main()
 
 	assert(g.path_exists(second, fourth) && "Second and fourth - Path should exist!");
 
+	rde::vector<noob::node_handle> children = g.get_children(second);
+	std::stringstream ss;
+
+	ss << "Children of node 2:";
+	for (noob::node_handle h : children)
+	{
+		ss << " " << h.index();
+	}
+
+	noob::logger::log(ss.str());
 	assert(!g.path_exists(second, third) && "Second and third - Path should not exist!");
 
 
