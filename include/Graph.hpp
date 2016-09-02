@@ -44,16 +44,9 @@ namespace noob
 			}
 		}
 
-		noob::node_handle add_node() noexcept(true)
-		{
-			noob::graph::node n;
-			nodes.push_back(n);
-			return noob::node_handle::make(nodes.size() - 1);
-		}
-
 		bool is_valid(noob::node_handle n) const noexcept(true)
 		{
-			if (!(n.index() < nodes.size()))
+			if (!(n.index() < nodes.size()) && n.index() != noob::graph::node::invalid)
 			{
 				return false;
 			}
@@ -68,13 +61,26 @@ namespace noob
 			}
 		}
 
+		noob::node_handle add_node() noexcept(true)
+		{
+			noob::graph::node n;
+			nodes.push_back(n);
+			return noob::node_handle::make(nodes.size() - 1);
+		}
+		
+		void empty() noexcept(true)
+		{
+			nodes.empty();
+		}
+
+
 		protected:
 
 		struct node
 		{
 			node() noexcept(true) : valid(true) {}
 
-			// static constexpr uint32_t invalid = std::numeric_limits<uint32_t>::max();
+			static constexpr uint32_t invalid = std::numeric_limits<uint32_t>::max();
 
 			bool valid;
 			std::vector<uint32_t> outgoing;
