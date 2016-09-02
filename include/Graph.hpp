@@ -13,7 +13,7 @@
 namespace noob
 {
 	typedef noob::handle<uint32_t> node_handle;
-
+	
 	class graph
 	{
 		public:
@@ -22,11 +22,11 @@ namespace noob
 			{
 				return nodes.size();
 			}
-			
+
 
 			noob::node_handle add_node() noexcept(true)
 			{
-				noob::graph<T>::node n;
+				noob::graph::node n;
 				nodes.push_back(n);
 				return noob::node_handle::make(nodes.size() - 1);
 			}
@@ -69,7 +69,7 @@ namespace noob
 
 			bool is_valid(noob::node_handle n) const noexcept(true)
 			{
-				if (!(n.index() < nodes.size()) && n.index() != noob::graph<T>::node::invalid)
+				if (!(n.index() < nodes.size()) && n.index() != noob::graph::node::invalid)
 				{
 					return false;
 				}
@@ -102,6 +102,6 @@ namespace noob
 				std::vector<uint32_t> outgoing;
 			};
 
-			std::vector<noob::graph<T>::node> nodes;
+			std::vector<noob::graph::node> nodes;
 	};
 }
