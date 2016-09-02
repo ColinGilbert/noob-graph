@@ -8,12 +8,14 @@
 #include <algorithm>
 #include <vector>
 
+#include "Component.hpp"
+
 namespace noob
 {
 	class graph
 	{
 		public:
-
+		typedef noob::handle<uint32_t> node_handle;
 		bool path_exists(uint32_t first, uint32_t second) const noexcept(true)
 		{
 			if (!is_valid(first) || !is_valid(second)) return false;

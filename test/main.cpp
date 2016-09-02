@@ -30,9 +30,10 @@ int main()
 
 	assert(!g.path_exists(second, third) && "Second and third - Path should not exist!");
 
+
 	// Up to this point, the graph has been acyclic. Further on, we test iterators and loops!
-
-
+	
+	
 
 
 	std::cout << "ALL PASS!\n";
