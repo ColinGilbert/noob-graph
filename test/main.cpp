@@ -7,8 +7,8 @@ int main()
 {
 	noob::graph g;
 	
-	const uint32_t first = g.add_node();
-	const uint32_t second = g.add_node();
+	const noob::node_handle first = g.add_node();
+	const noob::node_handle second = g.add_node();
 
 	assert(!g.path_exists(first, second) && "First & second - Path should not exist!");
 
@@ -16,9 +16,9 @@ int main()
 
 	assert(g.path_exists(first, second) && "First & second - Path should exist!");
 
-	const uint32_t third = g.add_node();
-	const uint32_t fourth = g.add_node();
-	const uint32_t fifth = g.add_node();
+	const noob::node_handle third = g.add_node();
+	const noob::node_handle fourth = g.add_node();
+	const noob::node_handle fifth = g.add_node();
 
 	g.add_path(first, third);
 	

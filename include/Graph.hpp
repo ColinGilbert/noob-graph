@@ -12,15 +12,19 @@
 
 namespace noob
 {
+
+	typedef noob::handle<uint32_t> node_handle;
 	class graph
 	{
 		public:
-		typedef noob::handle<uint32_t> node_handle;
-		bool path_exists(uint32_t first, uint32_t second) const noexcept(true)
+
+
+
+		bool path_exists(noob::node_handle first, noob::node_handle second) const noexcept(true)
 		{
 			if (!is_valid(first) || !is_valid(second)) return false;
 
-			return (std::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) != nodes[first].outgoing.end());		
+			return (std::find(nodes[first.index()].outgoing.begin(), nodes[first.index()].outgoing.end(), second.index()) != nodes[first.index()].outgoing.end());		
 		}
 
 		uint32_t num_nodes() const noexcept(true)
@@ -28,39 +32,39 @@ namespace noob
 			return nodes.size();
 		}
 
-		void add_path(uint32_t first, uint32_t second) noexcept(true)
+		void add_path(noob::node_handle first, noob::node_handle second) noexcept(true)
 		{
 			if (is_valid(first) && is_valid(second))
 			{
 				// Don't wanna add no duplicates
-				if (std::find(nodes[first].outgoing.begin(), nodes[first].outgoing.end(), second) == nodes[first].outgoing.end())
+				if (std::find(nodes[first.index()].outgoing.begin(), nodes[first.index()].outgoing.end(), second.index()) == nodes[first.index()].outgoing.end())
 				{
-					nodes[first].outgoing.push_back(second);
+					nodes[first.index()].outgoing.push_back(second.index());
 				}
 			}
 		}
 
-		uint32_t add_node() noexcept(true)
+		noob::node_handle add_node() noexcept(true)
 		{
 			noob::graph::node n;
 			nodes.push_back(n);
-			return nodes.size() - 1;
+			return noob::node_handle::make(nodes.size() - 1);
 		}
 
-		bool is_valid(uint32_t n) const noexcept(true)
+		bool is_valid(noob::node_handle n) const noexcept(true)
 		{
-			if (!(n < nodes.size()))
+			if (!(n.index() < nodes.size()))
 			{
 				return false;
 			}
-			return nodes[n].valid;
+			return nodes[n.index()].valid;
 		}
 
-		void set_valid(uint32_t n, bool b) noexcept(true)
+		void set_valid(noob::node_handle n, bool b) noexcept(true)
 		{
-			if (n < nodes.size())
+			if (n.index() < nodes.size())
 			{
-				nodes[n].valid = b;
+				nodes[n.index()].valid = b;
 			}
 		}
 
