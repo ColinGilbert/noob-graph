@@ -48,6 +48,22 @@ namespace noob
 				return results;
 			}
 
+			uint32_t get_children(rde::vector<noob::node_handle>& arg) const noexcept(true)
+			{
+				const uint32_t num_to_search = nodes[n.index()].outgoing.size();
+				uint32_t num_children = 0;
+				arg.clear();
+				for (noob::node_handle n : nodes[n.index()].outgoing)
+				{
+					if (n.valid)
+					{
+						arg.push_back(n);
+						++num_children;
+					}
+				}
+				return num_children;
+			}
+
 			bool path_exists(noob::node_handle first, noob::node_handle second) const noexcept(true)
 			{
 				if (!is_valid(first) || !is_valid(second)) return false;
