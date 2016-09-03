@@ -55,7 +55,7 @@ namespace noob
 				arg.clear();
 				for (uint32_t i = 0; i < num_to_search; ++i)
 				{	
-					if (nodes[n.index()].outgoing[i].valid)
+					if (nodes[nodes[n.index()].outgoing[i]].valid)
 					{
 						arg.push_back(noob::node_handle::make(i));
 						++num_children;
