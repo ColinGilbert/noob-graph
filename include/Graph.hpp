@@ -53,11 +53,11 @@ namespace noob
 				const uint32_t num_to_search = nodes[n.index()].outgoing.size();
 				uint32_t num_children = 0;
 				arg.clear();
-				for (noob::node_handle n : nodes[n.index()].outgoing)
+				for (noob::nod n : nodes[n.index()].outgoing)
 				{
 					if (n.valid)
 					{
-						arg.push_back(n);
+						arg.push_back(noob::node_handle::make(n));
 						++num_children;
 					}
 				}
