@@ -31,7 +31,7 @@ namespace noob
 				return noob::node_handle::make(nodes.size() - 1);
 			}
 
-			rde::vector<noob::node_handle> get_children(noob::node_handle n) const noexcept(true)
+			rde::vector<noob::node_handle> get_children(const noob::node_handle n) const noexcept(true)
 			{
 				rde::vector<noob::node_handle> results;
 				if (is_valid(n))
@@ -48,7 +48,7 @@ namespace noob
 				return results;
 			}
 
-			uint32_t get_children(rde::vector<noob::node_handle>& arg) const noexcept(true)
+			uint32_t get_children(const noob::node_handle n, rde::vector<noob::node_handle>& arg) const noexcept(true)
 			{
 				const uint32_t num_to_search = nodes[n.index()].outgoing.size();
 				uint32_t num_children = 0;
@@ -64,14 +64,14 @@ namespace noob
 				return num_children;
 			}
 
-			bool path_exists(noob::node_handle first, noob::node_handle second) const noexcept(true)
+			bool path_exists(const noob::node_handle first, const noob::node_handle second) const noexcept(true)
 			{
 				if (!is_valid(first) || !is_valid(second)) return false;
 
 				return (std::find(nodes[first.index()].outgoing.begin(), nodes[first.index()].outgoing.end(), second.index()) != nodes[first.index()].outgoing.end());		
 			}
 
-			void add_path(noob::node_handle first, noob::node_handle second) noexcept(true)
+			void add_path(const noob::node_handle first, const noob::node_handle second) noexcept(true)
 			{
 				if (is_valid(first) && is_valid(second))
 				{
@@ -83,7 +83,7 @@ namespace noob
 				}
 			}
 
-			bool is_valid(noob::node_handle n) const noexcept(true)
+			bool is_valid(const noob::node_handle n) const noexcept(true)
 			{
 				if (!(n.index() < nodes.size()) && n.index() != noob::graph::node::invalid)
 				{
@@ -92,7 +92,7 @@ namespace noob
 				return nodes[n.index()].valid;
 			}
 
-			void set_valid(noob::node_handle n, bool b) noexcept(true)
+			void set_valid(const noob::node_handle n, bool b) noexcept(true)
 			{
 				if (n.index() < nodes.size())
 				{
