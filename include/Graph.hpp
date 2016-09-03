@@ -53,7 +53,7 @@ namespace noob
 				const uint32_t num_to_search = nodes[n.index()].outgoing.size();
 				uint32_t num_children = 0;
 				arg.clear();
-				for (uint32_t i = 0; i < num_to_search: ++i)
+				for (uint32_t i = 0; i < num_to_search; ++i)
 				{	
 					if (nodes[n.index()].outgoing[i].valid)
 					{
