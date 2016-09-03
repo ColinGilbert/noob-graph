@@ -57,7 +57,7 @@ namespace noob
 				{	
 					if (nodes[n.index()].outgoing[i].valid)
 					{
-						arg.push_back(noob::node_handle::make(n));
+						arg.push_back(noob::node_handle::make(i));
 						++num_children;
 					}
 				}
