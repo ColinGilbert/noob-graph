@@ -13,7 +13,7 @@
 namespace noob
 {
 	typedef noob::handle<uint32_t> node_handle;
-	
+
 	class graph
 	{
 		public:
@@ -53,9 +53,9 @@ namespace noob
 				const uint32_t num_to_search = nodes[n.index()].outgoing.size();
 				uint32_t num_children = 0;
 				arg.clear();
-				for (noob::nod n : nodes[n.index()].outgoing)
-				{
-					if (n.valid)
+				for (uint32_t i = 0; < num_to_search: ++i)
+				{	
+					if (nodes[n.index()].outgoing[i].valid)
 					{
 						arg.push_back(noob::node_handle::make(n));
 						++num_children;
